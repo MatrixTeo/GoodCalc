@@ -1,0 +1,286 @@
+/* Base theme */
+a {
+	outline:0 none;
+	text-decoration:none;
+}
+body {
+	background:#000;
+	font-size:9vh;
+}
+.frame {
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+.calc {
+	width:50%;
+	height:100%;
+	overflow:hidden;
+	
+}
+.film {
+	position:relative;
+	width:200%;
+	height:100%;
+	transition: transform .4s ease;
+	-webkit-transition: -webkit-transform .4s ease;
+	-moz-transition: -moz-transform .4s ease;
+}
+.film.slide {
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+}
+.info-page {
+	position:absolute;
+	left:50%;
+	top:0px;
+	width:50%;
+	height:100%;
+	overflow:auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+
+.result {
+	width:100%;
+	height:20%;
+	position:relative;
+}
+.result.error {
+	box-shadow:0px 0.1em #BD0B0B inset;
+}
+.result .exp {
+	color:#fff;
+	display:table;
+	height:100%;
+	width:80%;
+	left:15%;
+	position:absolute;
+	overflow:hidden;
+	table-layout: fixed;
+	white-space:nowrap;
+
+}
+.result #text {
+	font-size:1em;
+}
+.result .cwrap {
+	text-decoration:none;
+	
+	
+	position:absolute;
+	left:0px;
+	display:table;
+	height:100%;
+	width:15%;
+	
+}
+.cwrap.hide {
+	display:none;
+}
+.fontlight {
+	font-weight:300;
+}
+.result .cancel {
+	font-size:1.3em;
+	text-decoration:none;
+	color:#777;
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+}
+.result .exp .string {
+	display:table-cell;
+	vertical-align:middle;
+	
+	text-align:right;
+	
+}	
+.keys {
+height:80%;
+}
+.pulsanti {
+	height:100%;
+	width:100%;
+	table-layout:fixed;
+}
+.pulsanti td{
+	width:25%;
+	height:20%;
+	vertical-align: top;
+}
+.buttn {
+	width:100%;
+	text-align:center;
+	height:100%;
+	display: table;
+	text-decoration:none;
+	font-weight:300;
+	transition:background .2s ease;
+	-webkit-transition:background .2s ease;
+	box-shadow:0px 0px 0px 1px #ccc;	
+	color:#000;
+	font-size:0.99em;
+	
+	-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+
+}
+.buttn.mini {
+	font-size:0.7em;
+}
+.buttn .label {
+	display: table-cell;
+	vertical-align: middle;
+}
+.buttn .rel {
+
+}
+.ap {
+}
+.buttn .apice {
+vertical-align: super;
+	font-size:0.5em;
+}
+
+.apM {
+margin-left:10%;
+opacity:.6;
+}
+.buttn .label .apice.rad {
+	/*margin-left:-10%;
+	top:14%;*/
+}
+.buttn.generic {
+	background:#fafafa;
+
+}
+.buttn.par {
+	background:#FFA12A;
+	color:#fff;
+	box-shadow:0px 0px 0px 1px #DB8518;	
+}
+.buttn.alert {
+	background: #D95023 !important;
+	box-shadow:0px 0px 0px 1px #AD4724 !important;	
+}
+.buttn.alert.hover {
+	background: #B54621 !important;
+	
+}
+.buttn.par.hover {
+	background:#E88C41;
+}
+.buttn.oper {
+	background:#E6E6E6;
+}
+.buttn.second {
+background:#F2F2F2;
+}
+.buttn.second.hover {
+	background:#DBDBDB;
+}
+.buttn.oper.hover {
+	background:#C7C7C7;
+}
+.buttn.generic.hover {
+	background:#DBDBDB;
+}
+.buttn.uguale {
+	background:#3c83f9;
+	color:#fff;
+}
+.buttn.uguale.hover {
+background:#2C6BD3;
+}
+
+.buttn.info {
+	background:#30960E;
+	color:#fff;
+}
+.buttn.info.hover {
+background:#317819;
+}
+.extra {
+	display:none;
+}
+.buttn  .label .alt {
+	position:relative;
+	top:10%;
+	right:10%;
+	font-size:0.7em;
+	opacity:.5;
+}
+.clear {
+	clear:both;
+}
+.left {
+	float:left;
+}
+.info-page h2 {
+	font-size:1.7em;
+	color:#fff;
+	padding:0px 0px 30px 0px;
+}
+.page-content .section {
+	padding:30px;
+}
+.section.border {
+	border-bottom:1px solid #ccc;
+
+	}
+.page {
+	color:#fff;
+	font-size:30px;
+}
+.speg {
+	font-size:1em;
+}
+.speg .row {
+	padding-bottom:10px;
+}
+.row .pedice {
+	opacity:.4;
+}
+.page p {
+	font-size:0.8em;
+}
+.page .speg p {
+	padding-bottom:1.4em;
+}
+.page .subtitle {
+	font-size:0.6em;
+}
+.apice_ {
+	vertical-align: super;
+	font-size:0.5em;
+}
+.backbutton {
+	text-decoration:none;
+	color:#fff;
+	font-weight:300;
+	transform: scale(1,1.9);
+	-webkit-transform: scale(1,1.9);
+	-moz-transform: scale(1,1.9);
+	font-size:1.8em;
+	padding-bottom:0.4em;
+	line-height:0.6em;
+}
+@media only screen and (orientation:landscape) {
+	.extra {
+		display:inline-table;
+	}
+	.pulsanti {
+		width:50%;
+		float:left;
+	}
+	.tohide {
+		display:none;
+	}
+	
+}

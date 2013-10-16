@@ -1,0 +1,18 @@
+{
+  "version": "1.1",
+  "name": "Good Calc",
+  "description": "Simple and powerful scientific calculator",
+  "launch_path": "/index.htm",
+  "icons": {
+    "16": "/img/icon-16.png",
+	"48": "/img/icon-48.png",
+	"60": "/img/icon-60.png",
+	"64": "/img/icon-64.png",
+	"128": "/img/icon-128.png"
+  },
+  "developer": {
+    "name": "Matteo D'Ignazio",
+    "url": "http://www.matrixteo.net"
+  },
+  "default_locale": "en"
+}
