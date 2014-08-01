@@ -10,7 +10,7 @@
 	
 	"sqrt\\((.*?)\\)", "sin\\((.*?)\\)", "log\\((.*?)\\)", "ln\\((.*?)\\)", "([0-9]+)\\!", "(\\*)+", "(\\/)+",
 	"([0-9]+)root\\((.*?)\\)",
-	"([0-9]+)\\^([0-9]+)",
+	"(([0-9]+)(\.([0-9]+))*)\\^([0-9]+)",
 	
 	"sin_", "cos_",
 	];
@@ -22,7 +22,7 @@
 	
 	"Math.sqrt($1)", "Math.sin($1)", "Math.log($1)", "Math.ln($1)", "rFact($1)", "*", "/",
 	"Math.pow($2, 1/$1)",
-	"Math.pow($1, $2)",
+	"Math.pow($1, $5)",
 	
 	"sin", "cos",
 	];
@@ -41,13 +41,22 @@
 			string2=string2.replace( search[a], replace[a] );
 		}
 		for(a=0; a<search_regex.length; a++){ // regex
+			myregexp= new RegExp(search_regex[a],"g");
+			mymatch = myregexp.exec(string2);
+			if(a==8){ // negative values under root
+				if(mymatch!=null){
+					if(mymatch[1] < 0){
+						string2="0*";
+						break;
+					}
+				}
+			}
 			string2=string2.replace( new RegExp(search_regex[a],"g"), replace_regex[a] );
 		}
 		$(".result").removeClass("error");
 		res2=string;
 		try
 		{
-		  console.log( string2 );
 		  eval("res2="+string2+";");
 		}
 		catch(e)
@@ -158,10 +167,11 @@
 	});
 	
 	$(window).resize(function(){
-		$("body").css("z-index", 1);
-	
+		$("body").css({"z-index":1, "font-size": parseInt($(window).height()/14+"px")});
+		getIn=parseInt($("#text").css("font-size"));
+		resizeString();
 	});
-	
+	$(window).trigger("resize");
 	$(document).on("tap", ".buttn.info", function(){
 		$(".film").addClass("slide");
 		

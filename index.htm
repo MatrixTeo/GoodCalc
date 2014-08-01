@@ -8,18 +8,26 @@
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	
 	<!-- powerTouch -->
-	<script type="text/javascript" src="js/powerTouch.js"></script>
+	<script type="text/javascript" src="js/powertouch-js-1.1.1.js"></script>
 	<script type="text/javascript" src="js/core.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/powerTouch.css">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/base.css">
 	
 	<link rel="stylesheet" type="text/css" href="css/moz.css">
 	<!-- font -->
 	<link href='css/font.css' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="js/l10n.js"></script>
+	<link rel="resource" type="application/l10n" href="locales.ini">
+	
 	
 	<script>
 		$(function(){
-			$().powerTouch();
+			$(document).powerTouch({
+				touchstart: function(el, event){
+				},
+				touchmovefocus: function(el, event){
+				}
+			});
 		});
 	</script>
 </head>
@@ -29,7 +37,7 @@
 			<div class="calc">
 				<div class="result">
 					<div class="cwrap fontlight hide">
-						<a href="javascript:;" class="cancel ui-el">&times;</a>
+						<a href="javascript:;" data-longtap="1" class="cancel ui-el">&times;</a>
 					</div>
 					<div class="exp fontlight" id="exp">
 							<div class="string" id="string">
@@ -41,9 +49,12 @@
 
 					<table class="pulsanti" cellspacing="0" border="0" cellpadding="0">
 						<tr>
-							<td><a href="javascript:;" class="buttn ui-el par" data-val="(" data-long=")"><span class="label rel">(<span class="apice apM tohide">)</span></span></span></a></td>
-							<td><a href="javascript:;" class="buttn ui-el par" data-val="[" data-long="]"><span class="label rel">[<span class="apice apM tohide">]</span></span></a></td>
-							<td><a href="javascript:;" class="buttn ui-el par" data-val="{" data-long="}"><span class="label rel">{<span class="apice apM tohide">}</span></span></a></td>
+							<td><a href="javascript:;" class="buttn ui-el par" data-val="(" data-long=")" data-longtap="1"><span class="label rel">(<span class="apice apM tohide">)</span></span></span></a></td>
+							<td><a href="javascript:;" class="buttn ui-el par" data-val="[" data-long="]" data-longtap="1"><span class="label rel">[<span class="apice apM tohide">]</span></span></a></td>
+							<td>
+								<a href="javascript:;" class="buttn ui-el par toshow" data-val="{" data-long="}" data-longtap="1"><span class="label rel">{<span class="apice apM tohide">}</span></span></a>
+								<a href="javascript:;" class="buttn ui-el second tohide" data-val="%"><span class="label">%</span></a></a>
+							</td>
 							<td><a href="javascript:;" class="buttn ui-el oper" data-val="+"><span class="label">+</span></a></td>
 						</tr>
 						<tr>
@@ -133,7 +144,7 @@
 						<div class="clear"></div>
 						<h2 class="left">Good Calc</h2>
 						<div class="clear"></div>
-						<p class="subtitle">
+						<p class="subtitle" data-l10n-id="SubTitleApp">
 							Simple and powerful scientific calculator.
 						</p>
 					</div>
@@ -150,13 +161,13 @@
 					<div class="section border">
 						<div class="speg">
 							<div class="row text">
-								) ] } = tap and hold ( [ {
+								) ] } = <span  data-l10n-id="TapAndHold">tap and hold</span> ( [ {
 							</div>
 						</div>
 					</div>
 					<div class="section ">
 						<div class="speg">
-							<div class="row text">
+							<div class="row text" data-l10n-id="DeleteAll">
 								delete all = tap and hold delete button 
 							</div>
 						</div>

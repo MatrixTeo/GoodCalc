@@ -6,6 +6,17 @@ a {
 body {
 	background:#000;
 	font-size:9vh;
+	font-family: 'Roboto', sans-serif;
+}
+a {
+		
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
 }
 .frame {
 	width:100%;
@@ -121,14 +132,6 @@ height:80%;
 	box-shadow:0px 0px 0px 1px #ccc;	
 	color:#000;
 	font-size:0.99em;
-	
-	-webkit-touch-callout:none;
--webkit-user-select:none;
--khtml-user-select:none;
--moz-user-select:none;
--ms-user-select:none;
-user-select:none;
--webkit-tap-highlight-color:rgba(0,0,0,0);
 
 }
 .buttn.mini {
@@ -271,6 +274,9 @@ background:#317819;
 	padding-bottom:0.4em;
 	line-height:0.6em;
 }
+.toshow {
+	display:none;
+}
 @media only screen and (orientation:landscape) {
 	.extra {
 		display:inline-table;
@@ -281,6 +287,12 @@ background:#317819;
 	}
 	.tohide {
 		display:none;
+	}
+	.toshow {
+		display:block;
+	}
+	.toshow.buttn {
+		display:table;
 	}
 	
 }
