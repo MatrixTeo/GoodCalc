@@ -6,7 +6,6 @@ a {
 body {
 	background:#000;
 	font-size:9vh;
-	font-family: 'Roboto', sans-serif;
 }
 a {
 		
@@ -274,9 +273,6 @@ background:#317819;
 	padding-bottom:0.4em;
 	line-height:0.6em;
 }
-.toshow {
-	display:none;
-}
 @media only screen and (orientation:landscape) {
 	.extra {
 		display:inline-table;
@@ -287,12 +283,6 @@ background:#317819;
 	}
 	.tohide {
 		display:none;
-	}
-	.toshow {
-		display:block;
-	}
-	.toshow.buttn {
-		display:table;
 	}
 	
 }

@@ -37,17 +37,15 @@
 				el=$(this);
 				$(this).addClass("hover");
 				getCoord($(this));
-				if($(this).attr("data-longtap")==1){
-					if (!(typeof longtimer === 'undefined')) {
-						clearTimeout( longtimer );
-					}
-					longtimer=setTimeout(function(){
-						if(catOrigin.target.hasClass("hover")){
-							catOrigin.target.trigger("longtap");
-							catOrigin.target.addClass("longtap");
-						}
-				},400);
+				if (!(typeof longtimer === 'undefined')) {
+					clearTimeout( longtimer );
 				}
+				longtimer=setTimeout(function(){
+					if(catOrigin.target.hasClass("hover")){
+						catOrigin.target.trigger("longtap");
+						catOrigin.target.addClass("longtap");
+					}
+				},400);
 				config.touchstart(el, event);
 
 			});
@@ -97,6 +95,7 @@
 					}
 					else if(catOrigin.target.hasClass("hover")){
 						catOrigin.target.removeClass("hover");
+						
 						catOrigin.target.trigger("tap");
 					}	
 				}
