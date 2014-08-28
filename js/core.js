@@ -99,6 +99,9 @@
 	
 	var FilmObj= new Film();
 	
+	search_regex_pre=["^([0-9\.]+)([\-\+\*\:])([0-9]+)\%$"];
+	replace_regex_pre=["$1$2($3\%$1)"];
+	
 	search=["]", "}", "[", "{", ":", "%"];
 	replace=[")", ")", "(", "(", "/", "/100*"];
 	
@@ -136,6 +139,11 @@
 	}
 	function exec(string){
 		string2=string;
+		for(a=0; a<search_regex_pre.length; a++){ // regex
+			myregexp= new RegExp(search_regex_pre[a],"g");
+			string2=string2.replace( new RegExp(search_regex_pre[a],"g"), replace_regex_pre[a] );
+		}
+		
 		for(a=0; a<search.length; a++){ // classico
 			string2=string2.replace( search[a], replace[a] );
 		}
