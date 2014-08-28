@@ -6,6 +6,7 @@ a {
 body {
 	background:#000;
 	font-size:9vh;
+	font-family: 'Roboto', sans-serif;
 }
 a {
 		
@@ -61,13 +62,11 @@ a {
 }
 .result .exp {
 	color:#fff;
-	display:table;
 	height:100%;
 	width:80%;
 	left:15%;
 	position:absolute;
 	overflow:hidden;
-	table-layout: fixed;
 	white-space:nowrap;
 
 }
@@ -100,11 +99,8 @@ a {
 	text-align:center;
 }
 .result .exp .string {
-	display:table-cell;
-	vertical-align:middle;
-	
-	text-align:right;
-	
+	height: 100%;
+	overflow: hidden;
 }	
 .keys {
 height:80%;
@@ -145,6 +141,10 @@ height:80%;
 }
 .ap {
 }
+.buttn .apiceTop {
+	position: absolute;
+	top:20px;
+}
 .buttn .apice {
 vertical-align: super;
 	font-size:0.5em;
@@ -167,11 +167,11 @@ opacity:.6;
 	color:#fff;
 	box-shadow:0px 0px 0px 1px #DB8518;	
 }
-.buttn.alert {
+.buttn.par.alert {
 	background: #D95023 !important;
 	box-shadow:0px 0px 0px 1px #AD4724 !important;	
 }
-.buttn.alert.hover {
+.buttn.par.alert.hover {
 	background: #B54621 !important;
 	
 }
@@ -180,6 +180,17 @@ opacity:.6;
 }
 .buttn.oper {
 	background:#E6E6E6;
+}
+.buttn.third {
+	background: #DD5F3F;
+	color: #fff;
+	box-shadow: 0px 0px 0px 1px #914646;
+}
+.buttn.third.alert {
+	background:#AA3939;
+}
+.buttn.third.hover {
+	background:#CC5141;
 }
 .buttn.second {
 background:#F2F2F2;
@@ -224,6 +235,9 @@ background:#317819;
 .left {
 	float:left;
 }
+.info-page  {
+	
+}
 .info-page h2 {
 	font-size:1.7em;
 	color:#fff;
@@ -233,15 +247,19 @@ background:#317819;
 	padding:30px;
 }
 .section.border {
-	border-bottom:1px solid #ccc;
+	border-bottom:1px solid #4D4D4D;
 
 	}
 .page {
 	color:#fff;
 	font-size:30px;
 }
+.page-header {
+	color:#FFB800;
+	margin-bottom:5px;
+}
 .speg {
-	font-size:1em;
+	font-size:0.8em;
 }
 .speg .row {
 	padding-bottom:10px;
@@ -273,6 +291,32 @@ background:#317819;
 	padding-bottom:0.4em;
 	line-height:0.6em;
 }
+.toshow {
+	display:none;
+}
+#string-film {
+	width:100%;
+	position: absolute;
+	transition: transform .4s ease;
+	-webkit-transition: -webkit-transform .4s ease;
+	-moz-transition: -moz-transform .4s ease;
+}
+#string-film.noAnimation {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -ms-transition: none !important;
+    transition: none !important;
+}
+.text-frame {
+	display:table;
+	width: 100%;
+}
+.text-frame .text-frame-cell {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: right;
+}
 @media only screen and (orientation:landscape) {
 	.extra {
 		display:inline-table;
@@ -283,6 +327,12 @@ background:#317819;
 	}
 	.tohide {
 		display:none;
+	}
+	.toshow {
+		display:block;
+	}
+	.toshow.buttn {
+		display:table;
 	}
 	
 }

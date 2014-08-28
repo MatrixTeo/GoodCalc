@@ -3,14 +3,15 @@
 <head>
     <meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-touch-fullscreen" content="yes" />
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	
 	<!-- powerTouch -->
-	<script type="text/javascript" src="js/powertouch-js-1.1.js"></script>
+	<script type="text/javascript" src="js/powertouch-js-1.5.js"></script>
 	<script type="text/javascript" src="js/core.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/powerTouch.css">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/base.css">
 	
 	<link rel="stylesheet" type="text/css" href="css/moz.css">
@@ -22,12 +23,9 @@
 	
 	<script>
 		$(function(){
-			$(document).powerTouch({
-				touchstart: function(el, event){
-				},
-				touchmovefocus: function(el, event){
-				}
-			});
+			var powerTouch = $.powerTouch();
+			powerTouch.attachTouch(".ui-el");
+			powerTouch.attachGesture(".ui-gesture", {"acceleration":0});
 		});
 	</script>
 </head>
@@ -35,13 +33,17 @@
 	<div class="frame">
 		<div class="film">
 			<div class="calc">
-				<div class="result">
+				<div class="result ui-gesture">
 					<div class="cwrap fontlight hide">
-						<a href="javascript:;" class="cancel ui-el">&times;</a>
+						<a href="javascript:;" data-longtap="1" class="cancel ui-el">&times;</a>
 					</div>
 					<div class="exp fontlight" id="exp">
 							<div class="string" id="string">
-								<span id="text"></span>
+								<div id="string-film">
+									<!--<div class="text-frame">
+										<span id="text"></span>
+									</div>-->
+								</div>
 							</div>
 					</div>
 				</div>
@@ -49,81 +51,81 @@
 
 					<table class="pulsanti" cellspacing="0" border="0" cellpadding="0">
 						<tr>
-							<td><a href="javascript:;" class="buttn ui-el par" data-val="(" data-long=")"><span class="label rel">(<span class="apice apM tohide">)</span></span></span></a></td>
-							<td><a href="javascript:;" class="buttn ui-el par" data-val="[" data-long="]"><span class="label rel">[<span class="apice apM tohide">]</span></span></a></td>
-							<td><a href="javascript:;" class="buttn ui-el par" data-val="{" data-long="}"><span class="label rel">{<span class="apice apM tohide">}</span></span></a></td>
-							<td><a href="javascript:;" class="buttn ui-el oper" data-val="+"><span class="label">+</span></a></td>
+							<td><a href="javascript:;" class="buttn insert ui-el par" data-val="(" data-long=")" data-longtap="1"><span class="label rel">(<span class="apice apM tohide">)</span></span></span></a></td>
+							<td><a href="javascript:;" class="buttn action ui-el third" data-action="M" data-longtap="1" id="btn-m"><span class="label rel">M<span class="apice apM">&times;</span></a></td>
+							<td><a href="javascript:;" class="buttn action ui-el third" data-action="Mr"><span class="label rel">Mr</span></a></td>
+							<td><a href="javascript:;" class="buttn insert ui-el oper" data-val="+"><span class="label">+</span></a></td>
 						</tr>
 						<tr>
-							<td><a href="javascript:;" class="buttn generic ui-el" data-val="7"><span class="label">7</span></a></td>
-							<td><a href="javascript:;" class="buttn generic ui-el" data-val="8"><span class="label">8</span></a></td>
-							<td><a href="javascript:;" class="buttn generic ui-el" data-val="9"><span class="label">9</span></a></td>
-							<td><a href="javascript:;" class="buttn ui-el oper" data-val="-"><span class="label">&mdash;</span></a></td>
+							<td><a href="javascript:;" class="buttn insert generic ui-el" data-val="7"><span class="label">7</span></a></td>
+							<td><a href="javascript:;" class="buttn insert generic ui-el" data-val="8"><span class="label">8</span></a></td>
+							<td><a href="javascript:;" class="buttn insert generic ui-el" data-val="9"><span class="label">9</span></a></td>
+							<td><a href="javascript:;" class="buttn insert ui-el oper" data-val="-"><span class="label">&mdash;</span></a></td>
 						</tr>
 						<tr>
-							<td><a href="javascript:;" class="buttn generic ui-el" data-val="4"><span class="label">4</span></a></td>
-							<td><a href="javascript:;" class="buttn generic ui-el" data-val="5"><span class="label">5</span></a></td>
-							<td><a href="javascript:;" class="buttn generic ui-el" data-val="6"><span class="label">6</span></a></td>
-							<td><a href="javascript:;" class="buttn ui-el oper" data-val="*"><span class="label">&times;</span></a></td>
+							<td><a href="javascript:;" class="buttn insert generic ui-el" data-val="4"><span class="label">4</span></a></td>
+							<td><a href="javascript:;" class="buttn insert generic ui-el" data-val="5"><span class="label">5</span></a></td>
+							<td><a href="javascript:;" class="buttn insert generic ui-el" data-val="6"><span class="label">6</span></a></td>
+							<td><a href="javascript:;" class="buttn insert ui-el oper" data-val="*"><span class="label">&times;</span></a></td>
 						</tr>
 						<tr>
-							<td><a href="javascript:;" class="buttn generic ui-el" data-val="1"><span class="label">1</span></a></td>
-							<td><a href="javascript:;" class="buttn generic ui-el" data-val="2"><span class="label">2</span></a></td>
-							<td><a href="javascript:;" class="buttn generic ui-el" data-val="3"><span class="label">3</span></a></td>
-							<td><a href="javascript:;" class="buttn ui-el oper" data-val=":"><span class="label">&divide;</span></a></td>
+							<td><a href="javascript:;" class="buttn insert generic ui-el" data-val="1"><span class="label">1</span></a></td>
+							<td><a href="javascript:;" class="buttn insert generic ui-el" data-val="2"><span class="label">2</span></a></td>
+							<td><a href="javascript:;" class="buttn insert generic ui-el" data-val="3"><span class="label">3</span></a></td>
+							<td><a href="javascript:;" class="buttn insert ui-el oper" data-val=":"><span class="label">&divide;</span></a></td>
 						</tr>
 						<tr>
-							<td><a href="javascript:;" class="buttn generic ui-el" data-val="0"><span class="label">0</span></a></td>
-							<td><a href="javascript:;" class="buttn generic ui-el" data-val="."><span class="label">,</span></a></td>
+							<td><a href="javascript:;" class="buttn insert generic ui-el" data-val="0"><span class="label">0</span></a></td>
+							<td><a href="javascript:;" class="buttn insert generic ui-el" data-val="."><span class="label">,</span></a></td>
 							<td colspan="2">
-								<a href="javascript:;" class="buttn ui-el uguale"><span class="label">=</span></a>
+								<a href="javascript:;" class="buttn insert ui-el uguale"><span class="label">=</span></a>
 							</td>
 				
 						</tr>
 					</table>
 					
 						<table class="pulsanti extra" cellspacing="0" border="0" cellpadding="0">
-						<tr>
-							<td><a id="close-tonda" href="javascript:;" class="buttn ui-el par" data-val=")"><span class="label">)</span></a></td>
-							<td><a href="javascript:;" class="buttn ui-el par" data-val="]"><span class="label">]</span></a></td>
-							<td><a href="javascript:;" class="buttn ui-el par" data-val="}"><span class="label">}</span></a></td>
-							<td><a href="javascript:;" class="buttn ui-el second" data-val="%"><span class="label">%</span></a></td>
+						<tr>								
+							<td><a id="close-tonda" href="javascript:;" class="buttn insert ui-el par" data-val=")"><span class="label">)</span></a></td>
+							<td><a href="javascript:;" class="buttn insert ui-el par" data-val="[" data-long="]" data-longtap="1"><span class="label rel">[<span class="apice apM">]</span></span></a></td>
+							<td><a href="javascript:;" class="buttn insert ui-el par toshow" data-val="{" data-long="}" data-longtap="1"><span class="label rel">{<span class="apice apM">}</span></span></a></td>
+							<td><a href="javascript:;" class="buttn insert ui-el second" data-val="%"><span class="label">%</span></a></td>
 						</tr>
 						<tr>
-							<td><a href="javascript:;" class="buttn  mini ui-el second" data-val="sin(" data-alert="1"><span class="label">sin</span></a></td>
-							<td><a href="javascript:;" class="buttn  mini ui-el second" data-val="cos(" data-alert="1"><span class="label">cos</span></a></td>
-							<td><a href="javascript:;" class="buttn  mini ui-el second" data-val="tan(" data-alert="1"><span class="label">tan</span></a></td>
-							<td><a href="javascript:;" class="buttn  ui-el oper" data-val="e"><span class="label">e</span></a></td>
+							<td><a href="javascript:;" class="buttn insert  mini ui-el second" data-val="sin(" data-alert="1"><span class="label">sin</span></a></td>
+							<td><a href="javascript:;" class="buttn insert  mini ui-el second" data-val="cos(" data-alert="1"><span class="label">cos</span></a></td>
+							<td><a href="javascript:;" class="buttn insert  mini ui-el second" data-val="tan(" data-alert="1"><span class="label">tan</span></a></td>
+							<td><a href="javascript:;" class="buttn insert  ui-el oper" data-val="e"><span class="label">e</span></a></td>
 							
 						</tr>
 						<tr>
-							<td><a href="javascript:;" class="buttn  mini ui-el second" data-val="sinh(" data-alert="1"><span class="label">sinh</span></a></td>
-							<td><a href="javascript:;" class="buttn  mini ui-el second" data-val="cosh(" data-alert="1"><span class="label">cosh</span></a></td>
-							<td><a href="javascript:;" class="buttn  mini ui-el second" data-val="tanh(" data-alert="1"><span class="label">tanh</span></a></td>
-							<td><a href="javascript:;" class="buttn ui-el oper" data-val="π"><span class="label">π</span></a></td>
+							<td><a href="javascript:;" class="buttn insert  mini ui-el second" data-val="sinh(" data-alert="1"><span class="label">sinh</span></a></td>
+							<td><a href="javascript:;" class="buttn insert  mini ui-el second" data-val="cosh(" data-alert="1"><span class="label">cosh</span></a></td>
+							<td><a href="javascript:;" class="buttn insert  mini ui-el second" data-val="tanh(" data-alert="1"><span class="label">tanh</span></a></td>
+							<td><a href="javascript:;" class="buttn insert ui-el oper" data-val="π"><span class="label">π</span></a></td>
 						</tr>
 						<tr>
 						<td>
-							<a href="javascript:;" class="buttn  ui-el second" data-val="^2">
+							<a href="javascript:;" class="buttn insert  ui-el second" data-val="^2">
 								<span class="label rel">x<span class="apice">2</span></span>
 							</a>
 						</td>
 						<td>
-							<a href="javascript:;" class="buttn ui-el second" data-val="^">
+							<a href="javascript:;" class="buttn insert ui-el second" data-val="^">
 								<span class="label rel">y<span class="apice">x</span></span>
 							</a>
 						</td>
 							
 							
-							<td><a href="javascript:;" class="buttn mini second ui-el" data-val="log(" data-alert="1"><span class="label">log</span></a></td>
+							<td><a href="javascript:;" class="buttn insert mini second ui-el" data-val="log(" data-alert="1"><span class="label">log</span></a></td>
 							
-							<td><a href="javascript:;" class="buttn ui-el second" data-val="!"><span class="label">x!</span></a></td>
+							<td><a href="javascript:;" class="buttn insert ui-el second" data-val="!"><span class="label">x!</span></a></td>
 							
 						</tr>
 						<tr>
 							
-								<td><a href="javascript:;" class="buttn second ui-el" data-val="sqrt(" data-alert="1"><span class="label">&radic;</span></a></td>
-								<td><a href="javascript:;" class="buttn ui-el second" data-val="root(" data-alert="1"><span class="label rel"><span class="apice rad">x</span>&radic;</span></a></td>
+								<td><a href="javascript:;" class="buttn insert second ui-el" data-val="sqrt(" data-alert="1"><span class="label">&radic;</span></a></td>
+								<td><a href="javascript:;" class="buttn insert ui-el second" data-val="root(" data-alert="1"><span class="label rel"><span class="apice rad">x</span>&radic;</span></a></td>
 							
 							<td colspan="2">
 								<a href="javascript:;" class="buttn ui-el info"><span class="label">Info</span></a>
@@ -142,30 +144,43 @@
 						<h2 class="left">Good Calc</h2>
 						<div class="clear"></div>
 						<p class="subtitle" data-l10n-id="SubTitleApp">
-							Simple and powerful scientific calculator.
+							Simple and powerful scientific calculator
 						</p>
 					</div>
 					<div class="section border">
 						<div class="speg">
+							<div class="row page-header"><span data-l10n-id="TitleMemory">Memory</span></div>
+							<div class="row">M <span class="ugul">=</span> <span data-l10n-id="M-symbol">write into memory</span></div>
+							<div class="row">Mr <span class="ugul">=</span> <span data-l10n-id="Mr-symbol">read from memory</span></div>
+							<div class="row">M<span class="apice_">&times;</span> <span class="ugul">=</span> <span data-l10n-id="M-symbol-cross">Tap&Hold, clear memory</span></div>
+						</div>
+					</div>
+					<div class="section border">
+						<div class="speg">
+							<div class="row page-header"><span data-l10n-id="TitleHistory">History</span></span></div>
+							<div class="row">&uarr; &darr; <span class="ugul">=</span> <span data-l10n-id="History-swipe">swipe up/down on calc bar</span></div>
+						</div>
+					</div>
+					<div class="section border">
+						<div class="speg">
+							<div class="row page-header"><span data-l10n-id="TitleMath">Math</span></div>
 							<div class="row"><span class="apice_">2</span>&radic;</span> <span class="ugul">=</span> sqrt()</div>
 							<div class="row"><span class="apice_">x</span>&radic;</span> <span class="ugul">=</span> <span class="pedice">x</span>root()</div>
 							<div class="row">x<span class="apice_">y</span></span> <span class="ugul">=</span> x^y</div>
 						</div>
-					
-						
-
 					</div>	
 					<div class="section border">
 						<div class="speg">
+							<div class="row page-header"><span data-l10n-id="TitleSymbols">Symbols</span></div>
 							<div class="row text">
-								) ] } = <span  data-l10n-id="TapAndHold">tap and hold</span> ( [ {
+								) ] } = <span  data-l10n-id="TapAndHold">Tap&Hold</span> ( [ {
 							</div>
 						</div>
 					</div>
 					<div class="section ">
 						<div class="speg">
 							<div class="row text" data-l10n-id="DeleteAll">
-								delete all = tap and hold delete button 
+								Delete all = Tap&Hold delete button 
 							</div>
 						</div>
 					</div>
