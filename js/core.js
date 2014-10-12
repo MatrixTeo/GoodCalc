@@ -131,7 +131,7 @@
 	"Math.tan($1)",
 	"Math.sqrt($1)", "Math.sin($1)", "Math.cos($1)", "Math.log($1)", "Math.ln($1)", "rFact($1)", "*", "/",
 	"Math.pow($2, 1/$1)",
-	"customPow($1, $2)",
+	"Math.pow($1, $2)",
 	
 	"sin", "cos",
 	"tan"
@@ -145,17 +145,7 @@
 		else
 		  { return num * rFact( num - 1 ); }
 	}
-	function customPow(num, exponent)
-	{
-		var exponent_tmp=Math.abs(exponent);
-		var base=num;
-		if(exponent < 0){
-			base=1/num;
-		}
-		result=Math.pow(base, exponent_tmp);
-		return result;
-		
-	}
+
 	function exec(string){
 		string2=string;
 		for(a=0; a<search_regex_pre.length; a++){ // regex
