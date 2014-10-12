@@ -108,25 +108,33 @@
 	search_regex=["\\π([0-9]+)", "([0-9]+)\\π", "\\π", 
 	"\\e([0-9]+)", "([0-9]+)\\e", "\\e",
 	
-	"sinh\\((.*?)\\)", "cosh\\((.*?)\\)",
+	"asin\\((.*?)\\)", 
+	"acos\\((.*?)\\)",
+	"atan\\((.*?)\\)",
 	
-	"sqrt\\((.*?)\\)", "sin\\((.*?)\\)", "log\\((.*?)\\)", "ln\\((.*?)\\)", "([0-9]+)\\!", "(\\*)+", "(\\/)+",
+	"tan\\((.*?)\\)",
+	"sqrt\\((.*?)\\)", "sin\\((.*?)\\)", "cos\\((.*?)\\)", "log\\((.*?)\\)", "ln\\((.*?)\\)", "([0-9]+)\\!", "(\\*)+", "(\\/)+",
 	"([0-9]+)root\\((.*?)\\)",
 	"(([0-9]+)(\.([0-9]+))*)\\^([0-9]+)",
 	
 	"sin_", "cos_",
+	"tan_",
 	];
 	replace_regex=[
 	"Math.PI*$1","$1*Math.PI", "Math.PI",
 	"Math.E*$1","$1*Math.E", "Math.E",
 	
-	"Math.asin_($1)", "Math.acos_($1)",
+	"Math.asin_($1)", 
+	"Math.acos_($1)",
+	"Math.atan_($1)",
 	
-	"Math.sqrt($1)", "Math.sin($1)", "Math.log($1)", "Math.ln($1)", "rFact($1)", "*", "/",
+	"Math.tan($1)",
+	"Math.sqrt($1)", "Math.sin($1)", "Math.cos($1)", "Math.log($1)", "Math.ln($1)", "rFact($1)", "*", "/",
 	"Math.pow($2, 1/$1)",
 	"Math.pow($1, $5)",
 	
 	"sin", "cos",
+	"tan"
 	];
 	s="sqrt(13)";
 	
@@ -165,6 +173,7 @@
 		var error=false;
 		try
 		{
+			console.log(string2);
 		  eval("res2="+string2+";");
 		}
 		catch(e)
