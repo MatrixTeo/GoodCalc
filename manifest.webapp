@@ -16,6 +16,10 @@
   },
   "default_locale": "en",
   "locales": {
+	  "eo": {
+		"name": "Bona kalkulilo",
+		"description": "Simpla kaj utila scienca kalkulilo."
+	  },
 	  "it": {
 		"name": "Good Calc",
 		"description": "Semplice e potente calcolatrice scientifica."
