@@ -116,9 +116,11 @@
 	"sqrt\\((.*?)\\)", "sin\\((.*?)\\)", "cos\\((.*?)\\)", "log\\((.*?)\\)", "ln\\((.*?)\\)", "([0-9]+)\\!", "(\\*)+", "(\\/)+",
 	"([0-9]+)root\\((.*?)\\)",
 	"([0-9.]+)\\^(([+-]*)([0-9]+))",
-	
+
 	"sin_", "cos_",
 	"tan_",
+	
+	"\\((.*?)\\)\\^(([+-]*)([0-9]+))",
 	];
 	replace_regex=[
 	"Math.PI*$1","$1*Math.PI", "Math.PI",
@@ -133,8 +135,11 @@
 	"Math.pow($2, 1/$1)",
 	"Math.pow($1, $2)",
 	
+	
 	"sin", "cos",
-	"tan"
+	"tan",
+	
+	"Math.pow($1, $2)",
 	];
 	s="sqrt(13)";
 	
@@ -185,6 +190,9 @@
 		if(error || isNaN(res2)){
 			$(".result").addClass("error");
 			res2=string;
+		 }
+		 else {
+			res2=(parseFloat(res2.toPrecision(12)));
 		 }
 		return res2;
 	}
